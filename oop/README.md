@@ -1,9 +1,5 @@
 # C# Files
 
-1. Calculation of Pi
-
----
-
 ## 1. Calculation of Pi
 
 A C# console app with two parts: approximating π with three different series, and simulating dice rolls.
@@ -21,9 +17,3 @@ A C# console app with two parts: approximating π with three different series, a
 ### Dice simulation
 
 Two six-sided dice are rolled 100,000 times with `Random`. The program counts how often each total (2-12) occurs and prints the counts. Totals near 7 appear most often because more dice combinations produce them, while 2 and 12 are the rarest.
-
-### Run
-
-```
-dotnet run
-```
