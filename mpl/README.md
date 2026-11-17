@@ -1,5 +1,5 @@
 # Python Files
-1. 01.py
+## 1. 01.py
 This Python script demonstrates basic loop structures (`for` and `while`) and conditional divisibility checks using the modulo operator. It includes an inactive `for` loop (commented out inside a multi-line string) intended to print all multiples of 17 between 1 and 1000, followed by an active `while` loop that counts down from 100 in steps of 10 and prints numbers divisible by both 3 and 5 (`90 60 30`).
 ```python
 """
@@ -14,7 +14,7 @@ while i > 0:
         print(i, end=" ")
     i = i - 10
 ```
-2. 02.py
+## 2. 02.py
 This Python script approximates the value of **Pi ($\pi$)** using the **Leibniz formula** ($1 - \frac{1}{3} + \frac{1}{5} - \frac{1}{7} + \dots = \frac{\pi}{4}$). It runs a `for` loop for 100,000 iterations, calculating each odd-denominator fraction (`terim`), alternating its sign between positive and negative (`sign *= -1`), and adding it to a running total before multiplying the final sum by 4 to print the result (`~3.14158`).
 ```python
 total = 0
@@ -27,7 +27,7 @@ for n in range(100000):
 pi_approximately = 4 * total
 print(pi_approximately)
 ```
-3. 03.py
+## 3. 03.py
 This Python script compares the convergence speed and accuracy of two mathematical series used to approximate **Pi ($\pi$)**: the **Leibniz formula** and the **Euler (Basel) series** ($\sum \frac{1}{n^2} = \frac{\pi^2}{6}$). After printing the results of both methods at 1,000 iterations, it uses `while` loops to calculate and display the exact number of iterations each algorithm requires to reach an accuracy within `0.001` of the true value of $\pi$, highlighting Euler's faster convergence.
 ```python
 acurate_pi = 3.141592653589
