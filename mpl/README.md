@@ -71,3 +71,63 @@ while abs(euler(i) - acurate_pi) > diff:
     i += 1
 print("Euler", i, diff, euler(i))
 ```
+## 4. 04-1.py
+This Python script demonstrates how to create and modify a list. It starts with an empty list and prints its length (`0`), then generates eight random integers from 1 to 6 and appends them to the list. It prints the resulting list and uses slice notation (`[::-1]`) to print the same elements in reverse order. The commented-out `print(len(t))` line would print the list's length after the eight values have been added.
+```python
+import random
+
+t = []
+print(len(t))
+
+for i in range(8):
+    element = int(6 * random.random()) + 1
+    t.append(element)
+
+print(t)
+# print(len(t))
+
+print(t[::-1])
+```
+## 5. 04-2.py
+This Python script simulates rolling three six-sided dice 100,000 times and counts how often each possible total (from 3 to 18) occurs. The list `t` stores one count for each total; `rst - 3` converts a dice total to its corresponding list index. The final loop prints each possible total alongside its frequency.
+```python
+import random
+
+
+def main():
+    random_gen = random.Random()
+
+    t = [0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0]
+
+    for j in range(100000):
+        dice1 = random_gen.randint(1, 6)
+        dice2 = random_gen.randint(1, 6)
+        dice3 = random_gen.randint(1, 6)
+
+        rst = dice1 + dice2 + dice3
+        t[rst - 3] += 1
+
+    for i in range(len(t)):
+        print(i + 3, t[i])
+
+
+if __name__ == "__main__":
+    main()
+```
+## 6. 04-3.py
+This Python script chooses a secret integer between 1 and 100 and repeatedly asks the user to guess it. It prints `"Too small"` or `"Too big"` when a guess is incorrect. However, when the guess is correct, neither condition runs and the `while True` loop does not stop, so the final `print(secret_num)` statement is never reached.
+```python
+import random
+
+secret_num = random.randint(1, 100)
+guess = 0
+
+while True:
+    guess = int(input("Try to guess: "))
+    if guess < secret_num:
+        print("Too small")
+    elif guess > secret_num:
+        print("Too big")
+
+print(secret_num)
+```
