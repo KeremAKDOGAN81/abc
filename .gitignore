@@ -615,4 +615,9 @@ FodyWeavers.xsd
 *.out
 *.app
 
+# C# project/solution files (only .cs files are tracked)
+*.csproj
+*.slnx
+*.sln
+
 # End of https://www.toptal.com/developers/gitignore/api/c++
