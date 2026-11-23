@@ -132,7 +132,7 @@ while True:
 print(secret_num)
 ```
 
-## 7. 05.py
+## 7. 05-1.py
 This Python script compares three mathematical methods for approximating Pi (`π`) and plots their convergence over 50 iterations using Matplotlib. The Leibniz series is implemented by `leibnitz(n)`, the Euler/Basel series by `euler(n)`, and the Wallis product by `wallis(n)`. The resulting estimates are rounded to two decimal places and displayed on a line chart in red, blue, and green, respectively, with a black reference line for `Pi = 3.14`.
 ```python
 import matplotlib.pyplot as plt
@@ -191,6 +191,22 @@ ax.set_xlabel("Number of iterrations: " + str(rep), fontsize=10)
 ax.set_ylabel("Value of PI", fontsize=10)
 plt.legend(bbox_to_anchor=(1, 1), ncol=1)
 plt.show()
+```
+
+## 8. 05-2.py
+This Python script stores a long passage in the `text` variable, then converts every character in the text into an element of a list. The code commented out with `# words = text.split()` and `# for w in words:` would instead split the passage into words and print each word separately. The active loop iterates over every character, appends it to `letters`, and finally prints the complete list.
+```python
+text = "The old lighthouse on the edge of the northern cliff had stood abandoned for nearly forty years, its once bright white paint peeling away to reveal the grey stone beneath, and its massive glass lens gathering thick layers of dust from the salty sea air. People in the nearby fishing village rarely spoke about it anymore, except when winter storms rattled their windows and reminded them of the nights when the beam used to sweep faithfully across the dark, treacherous waters. Julian, a young architect who had moved to the coast seeking solitude after years of exhausting city life, found himself strangely drawn to the forgotten structure during his daily walks along the rocky shore. One crisp autumn afternoon, carrying nothing more than a heavy iron key he had obtained from the local historical society and a small flashlight, he pushed open the rusted metal door at the base of the tower. The air inside smelled strongly of damp wood, cold stone, and decades of untouched silence, while a narrow spiral staircase wound upward into the shadows like the spine of a sleeping giant. Step by step, Julian climbed the echoing iron stairs, pausing occasionally to peer through the tiny, salt-crusted windows that framed the restless ocean below. When he finally reached the lantern room at the very top, the afternoon sun was just beginning to dip below the horizon, casting long golden reflections across the waves and illuminating the intricate brass gears of the ancient mechanism. On a small wooden desk beside the central pedestal lay a thick, leather-bound logbook, its pages yellowed with age yet remarkably preserved from the moisture outside. Out of curiosity, Julian opened the book to the final entry, dated November 14, 1984, expecting to find routine notes about wind speeds, barometric pressure, and passing cargo ships. Instead, the neat, slightly faded handwriting described a mysterious vessel with no running lights that had anchored just beyond the reef during a dense fog, signaling toward the tower with a rhythm that did not match any known maritime code. As the last light of day faded and the first stars began to appear over the water, Julian stood beside the silent glass lens, realizing that his quiet retreat by the sea had just turned into an unexpected mystery waiting to be solved."
+
+# words = text.split()
+# for w in words:
+#     print(w)
+
+letters = []
+for letter in text:
+    letters.append(letter)
+
+print(letters)
 ```
 
 
