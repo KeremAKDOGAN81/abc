@@ -1,244 +1,87 @@
-# C# Files
+# Object-Oriented Programming
+
+C# console exercises for the Object-Oriented Programming course.
+
+| Exercise | Folder | Topics |
+|---|---|---|
+| [Calculation of Pi](#1-calculation-of-pi) | [`Calculation of Pi/`](Calculation%20of%20Pi/) | Series, convergence, random simulation |
+| [Prime Numbers](#2-prime-numbers) | [`Prime Numbers/`](Prime%20Numbers/) | Trial division, loops, counting |
+| [Student Case](#3-student-case) | [`Student Case/`](Student%20Case/) | Classes, constructors, arrays, object state |
 
 ## 1. Calculation of Pi
 
-A C# console app with two parts: approximating π with three different series, and simulating dice rolls.
+A C# console app that:
 
-### Approximating π
+- Approximates pi using the Leibniz, Euler, and Wallis series.
+- Prints the result of each method after 1,000 terms.
+- Finds how many terms are needed for each method to get within `0.001` of `3.141592653589`.
+- Simulates rolling two six-sided dice 100,000 times and counts each total from 2 through 12.
 
-| Method | Idea | Function |
-|---|---|---|
-| Leibniz | π/4 = 1 − 1/3 + 1/5 − 1/7 + … | `Leibnitz(n)` |
-| Euler | π²/6 = 1 + 1/2² + 1/3² + … | `Euler(n)` |
-| Wallis | π/2 = (2/1 · 2/3) · (4/3 · 4/5) · … | `Wallis(n)` |
+### Main methods
 
-`n` is the number of terms. The program prints each result for `n = 1000`, then finds how many terms each method needs to get within 0.001 of the real value of π. This shows which method converges fastest.
+| Method | Purpose |
+|---|---|
+| `Leibnitz(int n)` | Approximates pi with the Leibniz series |
+| `Euler(int n)` | Approximates pi with the Euler series |
+| `Wallis(int n)` | Approximates pi with the Wallis product |
 
-### Dice simulation
-
-Two six-sided dice are rolled 100,000 times with `Random`. The program counts how often each total (2-12) occurs and prints the counts. Totals near 7 appear most often because more dice combinations produce them, while 2 and 12 are the rarest.
-
-### Code
-
-```csharp
-namespace Calculation_of_Pi
-{
-    internal class Program
-    {
-        static void Main(string[] args)
-        {
-            double accurate_pi = 3.141592653589;
-
-            Console.WriteLine($"{Leibnitz(1000)} {Euler(1000)} {Wallis(1000)}");
-
-            double diff = 0.001;
-            int i = 1;
-            while (Math.Abs(Leibnitz(i) - accurate_pi) > diff)
-            {
-                i++;
-            }
-            Console.WriteLine($"Leibnitz {i} {diff} {Leibnitz(i)}");
-
-            i = 1;
-            while (Math.Abs(Euler(i) - accurate_pi) > diff)
-            {
-                i++;
-            }
-            Console.WriteLine($"Euler {i} {diff} {Euler(i)}");
-
-            i = 1;
-            while (Math.Abs(Wallis(i) - accurate_pi) > diff)
-            {
-                i++;
-            }
-            Console.WriteLine($"Wallis {i} {diff} {Wallis(i)}");
-
-            Random random = new Random();
-
-            int rst = 0;
-            int o2 = 0;
-            int o3 = 0;
-            int o4 = 0;
-            int o5 = 0;
-            int o6 = 0;
-            int o7 = 0;
-            int o8 = 0;
-            int o9 = 0;
-            int o10 = 0;
-            int o11 = 0;
-            int o12 = 0;
-
-
-            for (int j = 0; j < 100000; j++)
-            {
-                int dice1 = random.Next(1, 7);
-                int dice2 = random.Next(1, 7);
-
-                rst = dice1 + dice2;
-
-                if (rst == 2)
-                {
-                    o2++;
-
-                }
-                if (rst == 3)
-                {
-                    o3++;
-                }
-                if (rst == 4)
-                {
-                    o4++;
-                }
-                if (rst == 5)
-                {
-                    o5++;
-                }
-                if (rst == 6)
-                {
-                    o6++;
-                }
-                if (rst == 7)
-                {
-                    o7++;
-                }
-                if (rst == 8)
-                {
-                    o8++;
-                }
-                if (rst == 9)
-                {
-                    o9++;
-                }
-                if (rst == 10)
-                {
-                    o10++;
-                }
-                if (rst == 11)
-                {
-                    o11++;
-                }
-                if (rst == 12)
-                {
-                    o12++;
-                }
-            }//end of the loop
-            Console.WriteLine("2: " + o2);
-            Console.WriteLine("3: " + o3);
-            Console.WriteLine("4: " + o4);
-            Console.WriteLine("5: " + o5);
-            Console.WriteLine("6: " + o6);
-            Console.WriteLine("7: " + o7);
-            Console.WriteLine("8: " + o8);
-            Console.WriteLine("9: " + o9);
-            Console.WriteLine("10: " + o10);
-            Console.WriteLine("11: " + o11);
-            Console.WriteLine("12: " + o12);
-        }
-
-
-        public static double Leibnitz(int n)
-        {
-            double pi = 0;
-            int sign = -1;
-
-            for (int i = 0; i <= n; i++)
-            {
-                sign *= -1;
-                pi += sign * 1.0 / (2 * i + 1);
-
-            }
-
-            return 4 * pi;
-        }
-
-        public static double Euler(int n)
-        {
-            double pi = 0;
-            for (int i = 1; i <= n; i++)
-            {
-                pi += 1.0 / ((double)i * i);
-            }
-            return Math.Sqrt(6 * pi);
-        }
-
-        public static double Wallis(int n)
-        {
-            double pi = 1;
-            for (int i = 1; i <= n; i++)
-            {
-                pi *= (2.0 * i) / (2.0 * i - 1) * (2.0 * i) / (2.0 * i + 1);
-            }
-            return pi * 2;
-        }
-
-    }
-}
-```
+The exercise uses `Random.Next(1, 7)` for each die. Totals around 7 occur most frequently because they have more possible combinations.
 
 ## 2. Prime Numbers
 
-A C# console app that finds all prime numbers in a given range and counts them.
+A C# console app that checks the integers from `1` through `100000`, prints the prime numbers, and reports the total.
 
-| Function | What it does |
+### Main methods
+
+| Method | Purpose |
 |---|---|
-| `prime(a, b)` | Checks if `a` is prime by trying to divide it by every number from 2 to `a − 1` |
-| `howManyPrimes(a, b)` | Counts the primes between `a` and `b` (inclusive) |
+| `prime(int a, int b)` | Checks whether `a` is prime using trial division |
+| `howManyPrimes(int a, int b)` | Counts primes in the inclusive range |
 
-The range is set in `Main` with `start = 1` and `finish = 100000`. The program prints every prime it finds, then prints the total, for example `Between 1 and 100000: 9592 primes`.
+The current implementation tests divisors from `2` to `a - 1`. This is clear and suitable for a small exercise, but it can be made substantially faster with divisors only up to `sqrt(a)` or by using the Sieve of Eratosthenes.
 
-This uses simple trial division, so it is easy to read but slow for large ranges. It could be made faster by only testing divisors up to √a, or by using the Sieve of Eratosthenes.
+Example output:
 
-### Code
-
-```csharp
-namespace ConsoleApp1
-{
-    internal class Program
-    {
-        static void Main(string[] args)
-        {
-            int start = 1;
-            int finish = 100000;
-            for (int i = start; i <= finish; i++)
-            {
-                if (prime(i, finish) == true)
-                {
-                    Console.WriteLine(i + ", ");
-                }
-            }
-            Console.WriteLine("Between {0} and {1}: {2} primes", start, finish, howManyPrimes(start, finish));
-        }
-        public static bool prime(int a, int b)
-        {
-            if (a <= 1)
-            {
-                return false;
-            }
-            for (int i = 2; i < a; i++)
-            {
-                if (a % i == 0)
-                {
-                    return false;
-                }
-            }
-            return true;
-        }
-        public static int howManyPrimes(int a, int b)
-        {
-
-            int count = 0;
-            for (int i = a; i <= b; i++)
-            {
-                if (prime(i, b) == true)
-                {
-                    count++;
-                }
-            }
-            return count;
-        }
-
-
-
-    }
-}
+```text
+2,
+3,
+5,
+...
+Between 1 and 100000: 9592 primes
 ```
+
+## 3. Student Case
+
+A C# console app that demonstrates basic object-oriented programming concepts with `Computer` and `Student` classes.
+
+### Computer objects
+
+The `Computer` class stores:
+
+- BIOS name
+- IP address
+- Operating system
+
+The program creates an array of computers and assigns generated IP addresses. It also replaces two entries with a server and a graphics station. The BIOS name and IP address of every computer are printed.
+
+### Student objects
+
+The `Student` class stores:
+
+- Name
+- Study age
+- Faculty
+- Student ID
+
+The program creates students with parameterized constructors and also demonstrates a parameterless constructor followed by manually assigned fields. It prints all students, then filters and prints only students in Computer Programming.
+
+### Concepts demonstrated
+
+- User-defined classes
+- Constructors
+- Object arrays
+- Public fields
+- Reading object state
+- Filtering objects
+- Console output formatting
+
